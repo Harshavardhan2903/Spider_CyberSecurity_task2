@@ -13,15 +13,21 @@ This contains details of the the previous bonus task and the current task .
 >>>dmesg | tail
 >>>
 
+
+4)finally to remove the module
+>>sudo rmmod time_module.ko
+
+
+
 #Instruction for the second linux module task
 
 have to get syscall table address and then get execve(which executes programs) address and hook it
 
 procedure:
 
->since my linux version is 5.18 ( above 5.7) cannot get syscall table address directly . so used kprobes method .
->after getting , we first disable write protection and then hook the execve call with a variant of ours then again enable write protection .
->and when exiting we again put it back to original syscall .
+1)since my linux version is 5.18 ( above 5.7) cannot get syscall table address directly . so used kprobes method .
+2)fter getting , we first disable write protection and then hook the execve call with a variant of ours then again enable write protection .
+3)and when exiting we again put it back to original syscall .
 
 
 >>>sudo insmod task2.c
@@ -30,5 +36,3 @@ procedure:
 
 
 
-4)finally to remove the module
->>sudo rmmod time_module.ko
